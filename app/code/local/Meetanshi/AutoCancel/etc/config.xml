@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Meetanshi_AutoCancel>
+            <version>1.0.0</version>
+        </Meetanshi_AutoCancel>
+    </modules>
+    <global>
+        <models>
+            <autocancel>
+                <class>Meetanshi_AutoCancel_Model</class>
+            </autocancel>
+        </models>
+        <helpers>
+            <autocancel>
+                <class>Meetanshi_AutoCancel_Helper</class>
+            </autocancel>
+        </helpers>
+        <template>
+            <email>
+                <autocancel_general_template translate="label" module="autocancel">
+                    <label>Custom Email Template</label><!-- this should be shown in the config dropdown-->
+                    <file>autocancel.html</file>
+                    <type>html</type>
+                </autocancel_general_template>
+            </email>
+        </template>
+    </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <autocancel translate="title">
+                                            <title>Order Auto Cancel</title>
+                                        </autocancel>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <default>
+        <autocancel>
+            <general>
+                <template>autocancel_general_template</template>
+            </general>
+        </autocancel>
+    </default>
+    <crontab>
+        <jobs>
+            <autocancel>
+                <schedule>
+                    <cron_expr>0 */12 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>autocancel/observer::autoCancel</model>
+                </run>
+            </autocancel>
+        </jobs>
+    </crontab>
+</config>

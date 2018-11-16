@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Meetanshi_AutoCancel>
+            <active>true</active>
+            <codePool>local</codePool>            
+        </Meetanshi_AutoCancel>
+    </modules>
+</config>
